@@ -1,5 +1,5 @@
 import pandas as pd
-
+#Dataset used in this is from WGMS
 # Define file paths
 data_dir = r"C:\Users\Anam\Desktop\New folder\ML PROJECT_GLACIER\GLACIER DATA"
 output_file = f"{data_dir}\\glacier_mass_balance_final_cleaned.csv"
@@ -30,7 +30,7 @@ merged_df.drop(columns=['POLITICAL_UNIT_y'], inplace=True)
 merged_df.rename(columns={'POLITICAL_UNIT_x': 'POLITICAL_UNIT'}, inplace=True)
 
 # Fill missing values
-merged_df['ELA_UNC'] = merged_df['ELA_UNC'].fillna(merged_df['ELA_UNC'].median())  # ✅ Fix: No inplace=True
+merged_df['ELA_UNC'] = merged_df['ELA_UNC'].fillna(merged_df['ELA_UNC'].median())  #  Fix: No inplace=True
 
 # Fill missing ELA values using the mean per glacier
 merged_df['ELA'] = merged_df.groupby('GLACIER_NAME')['ELA'].transform(lambda x: x.fillna(x.mean()))
